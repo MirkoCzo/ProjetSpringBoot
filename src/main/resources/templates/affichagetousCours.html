@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Les cours</title>
+</head>
+<body>
+<table border="1">
+  <th>ID_COURS</th>
+  <th>MATIÈRES</th>
+  <th>HEURES</th>
+  <tr th:each="unCours : ${mesCours}">
+    <td th:text="${unCours.id_cours}"/>
+    <td th:text="${unCours.matiere}"/>
+    <td th:text="${unCours.heures}"/>
+  </tr>
+</table>
+<form action="tous/suppression" id="delForm">
+  Id du cours que vous souhaitez supprimer <input type="text" id="del" name="del"/>
+  <button type="submit" form="delForm">Supprimer</button>
+</form>
+<a href="/">Retour accueil</a>
+</body>
+</html>

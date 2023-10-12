@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon site de cours</title>
+</head>
+<body>
+<div>
+    <div>
+        <h1><a href="/cours/tous">Afficher tous les cours</a></h1>
+        <h2>Rechercher un cours</h2>
+        <form action="cours/selection" method="get" id="searchForm">
+            Rentrez un ID pour rechercher un cours = <input type="text" id="id" name="id"/>
+            <button type="submit" form="searchForm">Rechercher</button>
+        </form>
+    </div>
+    <br>
+        <div>
+            <h2>Ajouter un cours</h2>
+            <form action="cours/ajout" method="get" id="addForm">
+                Matière du cours = <input type="text" id="mat" name="mat"/>
+                Nombre d'heures de cours = <input type="text" id="heures" name="heures"/>
+                <button type="submit" form="addForm">Ajouter</button>
+            </form>
+        </div>
+    <div>
+        <h2>Rechercher les cours dans une range d'ID</h2>
+        <form action="cours/findBetweenId" method="get" id="searchBetween">
+            <p>Entre l'id n°<input type="text" id="id1" name="id1"> et <input type="text" id="id2" name="id2"></p>
+            <br>
+            <button type="submit" form="searchBetween">Rechercher</button>
+        </form>
+    </div>
+    <div>
+        <h2>Rechercher les cours par le nom de la matière</h2>
+        <form action="cours/findAllCoursByMatiere" method="get" id="searchAllByMatiere">
+            <p>Entrer le nom de la matière : <input type="text" id="findMat" name="findMat"></p>
+            <button type="submit" form="searchAllByMatiere">Rechercher</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
