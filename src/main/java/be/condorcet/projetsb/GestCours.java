@@ -2,9 +2,8 @@ package be.condorcet.projetsb;
 
 import be.condorcet.projetsb.modele.Cours;
 import be.condorcet.projetsb.modele.CoursComparator;
-import be.condorcet.projetsb.modele.repositories.CoursRepository;
+import be.condorcet.projetsb.repositories.CoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

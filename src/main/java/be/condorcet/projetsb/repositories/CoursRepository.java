@@ -1,4 +1,4 @@
-package be.condorcet.projetsb.modele.repositories;
+package be.condorcet.projetsb.repositories;
 
 import be.condorcet.projetsb.modele.Cours;
 import org.springframework.data.jpa.repository.JpaRepository;
