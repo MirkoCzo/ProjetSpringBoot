@@ -3,6 +3,7 @@ package be.condorcet.projetsb;
 import be.condorcet.projetsb.modele.Cours;
 import be.condorcet.projetsb.modele.CoursComparator;
 import be.condorcet.projetsb.repositories.CoursRepository;
+import be.condorcet.projetsb.services.InterfCoursService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import java.util.*;
 public class GestCours {
     @Autowired     //instanciation "automatique" par le framework avec les paramètres indiqués, il s'agit d'un singleton
     private CoursRepository coursRepository;
+
     /*@Autowired
     CacheManager cacheManager;
 
