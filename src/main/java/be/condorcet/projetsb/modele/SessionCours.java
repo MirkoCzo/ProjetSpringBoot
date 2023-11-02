@@ -15,7 +15,7 @@ import java.sql.Date;
 @Table(name = "APISESSIONCOURS", schema = "ORA2", catalog = "XE")
 public class SessionCours {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sessioncours_generator")
-    @SequenceGenerator(name = "sessioncours_generator", sequenceName = "APISESSIONCOURS_SEQ", allocationSize = 1)
+    @SequenceGenerator(name = "sessioncours_generator", sequenceName = "APISESSIONCOURS_SEQ1", allocationSize = 1)
     private Integer id_sessioncours;
 
     @NonNull
