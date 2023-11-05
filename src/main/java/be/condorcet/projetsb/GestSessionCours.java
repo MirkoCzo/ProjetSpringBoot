@@ -1,5 +1,6 @@
 package be.condorcet.projetsb;
 
+import be.condorcet.projetsb.modele.Cours;
 import be.condorcet.projetsb.modele.SessionCours;
 import be.condorcet.projetsb.repositories.SessionCoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,23 @@ public class GestSessionCours {
         return "affichageParInscrits";
     }
 
+    @RequestMapping("/findSessionByCours")
+    String findSessionByCoursId(@RequestParam("idCours")int idCours, Map<String,Object>model)
+    {
+        List<SessionCours> lsc;
+        try
+        {
+            lsc=sessionCoursRepository.findSessionCoursByCours_Idcours(idCours);
+            model.put("mesSessions",lsc);
+
+        }catch (Exception e)
+        {
+            System.out.println("Erreur lors de la recherche de toutes les sessions" +e);
+            return "error";
+        }
+        return "affichageSessionParCours";
+    }
+
 
 }
-//TODO CRITERE NON UNIQUE COURS/LOCAL + TOUTES LES SESSION D'UN COURS DONNE
+//TODO TOUTES LES SESSION D'UN COURS DONNE + TEST CRITERE LOCAL/COURS

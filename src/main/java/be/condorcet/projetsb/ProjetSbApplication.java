@@ -44,7 +44,7 @@ public class ProjetSbApplication implements CommandLineRunner {
                 //ensemble des lignes répondant à la requête
         ) {
             while (rs.next()) {
-                int ID = rs.getInt("ID_COURS");
+                int ID = rs.getInt("IDCOURS");
                 //ou rs.getString(2);
                 String mat = rs.getString("MATIERE");
                 //ou rs.getString(3);

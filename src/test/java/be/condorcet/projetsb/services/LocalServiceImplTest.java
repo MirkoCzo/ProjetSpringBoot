@@ -117,4 +117,16 @@ class LocalServiceImplTest {
             System.out.println("Erreur lors de la recherche de tout les locauxx");
         }
     }
+
+    @Test
+    void findAllByPlacesGreaterThanEqual() {
+        try
+        {
+            List<Local> ll = localServiceImpl.findAllByPlacesGreaterThanEqual(0);
+            assertNotEquals(0,ll.size(),"aucun local dans la liste");
+        }catch (Exception e)
+        {
+            System.out.println("Erreur lors de la recherche de tout les locaux");
+        }
+    }
 }

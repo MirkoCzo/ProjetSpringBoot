@@ -99,7 +99,7 @@ class SessionCoursServiceImplTest {
             assertEquals(dateFin,sessionCours.getDate_Fin(), "Date de fin différente, date voulue: " + dateDebut + " réelle date: " + sessionCours.getDate_Fin());
             assertEquals(001,sessionCours.getNbreinscrits(),"nombre d'inscrits différent.");
             assertEquals(local.getId_local(), sessionCours.getLocal().getId_local(), "Id de local différent, ID voulu: " + local.getId_local() + " réel ID : " + sessionCours.getLocal().getId_local());
-            assertEquals(cours.getId_cours(), sessionCours.getCours().getId_cours(), "Id de cours différent, ID voulu: " + cours.getId_cours() + " réel ID: " + sessionCours.getCours().getId_cours());
+            assertEquals(cours.getIdcours(), sessionCours.getCours().getIdcours(), "Id de cours différent, ID voulu: " + cours.getIdcours() + " réel ID: " + sessionCours.getCours().getIdcours());
         }catch (Exception e)
         {
             System.out.println("Erreur lors de la création "+e);
@@ -202,5 +202,24 @@ class SessionCoursServiceImplTest {
             fail("Erreur lors de la recherche de toutes les session par nombre d'inscrits.");
         }
 
+    }
+
+    @Test
+    void findSessionCoursByCours_Idcours() {
+        try
+        {
+            boolean flag=false;
+            List<SessionCours> lsc = sessionCoursService.findSessionCoursByCours_Idcours(1);
+            for (SessionCours sc : lsc
+            ) {
+                System.out.println(sc);
+                flag=true;
+
+            }
+            assertTrue(flag,"Aucune Session dans la liste");
+        }catch (Exception e)
+        {
+            fail("Erreur lors de la recherche de toutes les session par nombre d'inscrits.");
+        }
     }
 }

@@ -27,7 +27,6 @@ public class GestCours {
     @RequestMapping("/tous")
     public String affTous(Map<String, Object> model){
         //evictAllCaches();
-        System.out.println("recherche cours");
         List<Cours> liste;
         try {
             liste = coursRepository.findAll();
@@ -94,7 +93,7 @@ public class GestCours {
                 ocl=coursRepository.findById(id);
                 if (ocl.isPresent())
                 {
-                    /*c.setId_cours(ocl.get().getId_cours());
+                    /*c.setIdcours(ocl.get().getIdcours());
                     c.setMatiere(ocl.get().getMatiere());
                     c.setHeures(ocl.get().getHeures());*/
                     c=ocl.get();
@@ -115,7 +114,6 @@ public class GestCours {
     String selection(@RequestParam("matiere") String mat, Map<String,Object> model)
     {
         List<Cours> lc;
-        Optional<Cours> ocl;
         try
         {
             lc = coursRepository.findByMatiere(mat);
@@ -161,6 +159,23 @@ public class GestCours {
             return "error";
         }
         return "affichagetousCours";
+    }
+
+    @RequestMapping("/findAllCoursByHeures")
+    String findAllCoursByHeures(@RequestParam("Byheure") int heures, Map<String,Object> model)
+    {
+        List<Cours> lc;
+        try
+        {
+            lc = coursRepository.findAllByHeuresGreaterThanEqual(heures);
+            model.put("mesCours",lc);
+        } catch (Exception e)
+        {
+            System.out.println("Erreur lors de la lecture "+e);
+            model.put("error",e);
+            return "error";
+        }
+        return "affCoursParHeures";
     }
 
 

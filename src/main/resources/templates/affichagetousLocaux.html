@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Les cours</title>
+</head>
+<body>
+<table border="1">
+  <th>ID_LOCAL</th>
+  <th>Sigle</th>
+  <th>Places</th>
+  <th>Description</th>
+  <tr th:each="unLocal : ${mesLocaux}">
+    <td th:text="${unLocal.id_local}"/>
+    <td th:text="${unLocal.sigle}"/>
+    <td th:text="${unLocal.places}"/>
+    <td th:text="${unLocal.description}"/>
+  </tr>
+</table>
+<a href="/">Retour accueil</a>
+</body>
+</html>

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @Transactional(rollbackOn = Exception.class)
-public class LocalServiceImpl implements InterfService<Local>{
+public class LocalServiceImpl implements InterfLocalService{
 
     @Autowired
     private LocalRepository localRepository;
@@ -42,5 +42,10 @@ public class LocalServiceImpl implements InterfService<Local>{
     @Override
     public List<Local> all() throws Exception {
         return localRepository.findAll();
+    }
+
+    @Override
+    public List<Local> findAllByPlacesGreaterThanEqual(int places) {
+        return localRepository.findAllByPlacesGreaterThanEqual(places);
     }
 }

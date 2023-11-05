@@ -15,7 +15,7 @@ public class Cours {
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cours_generator")
     @SequenceGenerator(name = "cours_generator",sequenceName = "APICOURS_SEQ", allocationSize = 1)
-    private Integer id_cours;
+    private Integer idcours;
 
     @NonNull
     private String matiere;

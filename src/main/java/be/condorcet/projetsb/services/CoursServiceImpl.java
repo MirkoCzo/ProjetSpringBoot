@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 @Transactional(rollbackOn = Exception.class)
 
-public class CoursServiceImpl implements InterfService<Cours>{
+public class CoursServiceImpl implements InterfCoursService{
     @Autowired
     private CoursRepository coursRepository;
 
@@ -30,18 +30,24 @@ public class CoursServiceImpl implements InterfService<Cours>{
 
     @Override
     public Cours update(Cours cours) throws Exception {
-        read(cours.getId_cours());
+        read(cours.getIdcours());
         coursRepository.save(cours);
         return cours;
     }
 
     @Override
     public void delete(Cours cours) throws Exception {
-        coursRepository.deleteById(cours.getId_cours());
+        coursRepository.deleteById(cours.getIdcours());
     }
 
     @Override
     public List<Cours> all() throws Exception {
         return coursRepository.findAll();
+    }
+
+
+    @Override
+    public List<Cours> findAllByHeuresGreaterThanEqual(int heures) {
+        return coursRepository.findAllByHeuresGreaterThanEqual(heures);
     }
 }

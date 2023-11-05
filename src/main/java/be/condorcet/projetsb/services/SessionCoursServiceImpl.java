@@ -1,5 +1,6 @@
 package be.condorcet.projetsb.services;
 
+import be.condorcet.projetsb.modele.Cours;
 import be.condorcet.projetsb.modele.SessionCours;
 import be.condorcet.projetsb.repositories.SessionCoursRepository;
 import jakarta.transaction.Transactional;
@@ -51,4 +52,11 @@ public class SessionCoursServiceImpl implements InterfSessionCoursService {
     public List<SessionCours> findSessionCoursByNbreinscritsGreaterThan(int nbreinscrit) {
         return sessionCoursRepository.findSessionCoursByNbreinscritsGreaterThan(nbreinscrit);
     }
+
+    @Override
+    public List<SessionCours> findSessionCoursByCours_Idcours(int idcours) {
+        return sessionCoursRepository.findSessionCoursByCours_Idcours(idcours);
+    }
+
+
 }

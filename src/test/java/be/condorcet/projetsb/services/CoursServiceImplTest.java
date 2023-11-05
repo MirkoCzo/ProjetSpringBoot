@@ -50,7 +50,7 @@ class CoursServiceImplTest {
     void create() {
         try
         {
-            assertNotEquals(0,cours.getId_cours(),"Id du cours non incrémenté");
+            assertNotEquals(0,cours.getIdcours(),"Id du cours non incrémenté");
             assertEquals("TestMatiere",cours.getMatiere(),"Matière non enregistré: "+cours.getMatiere()+" au lieu de TestMatiere");
             assertEquals(01, cours.getHeures(),"Nombre d'heures incorrectes: "+cours.getHeures()+" au lieu de 01");
         }
@@ -64,7 +64,7 @@ class CoursServiceImplTest {
     void read() {
         try
         {
-            int numcours=cours.getId_cours();
+            int numcours=cours.getIdcours();
             Cours cours2=coursServiceImpl.read(numcours);
             assertEquals("TestMatiere",cours2.getMatiere());
             assertEquals(01,cours2.getHeures());
@@ -97,7 +97,7 @@ class CoursServiceImplTest {
         {
             coursServiceImpl.delete(cours);
             Assertions.assertThrows(Exception.class,() -> {
-                coursServiceImpl.read(cours.getId_cours());
+                coursServiceImpl.read(cours.getIdcours());
             },"Cours non effacé");
         }catch (Exception e)
         {
@@ -115,5 +115,18 @@ class CoursServiceImplTest {
         {
             fail("erreur de recherche de tous les cours");
         }
+    }
+
+    @Test
+    void findAllByHeuresGreaterThanEqual() {
+        try
+        {
+            List<Cours> lc = coursServiceImpl.findAllByHeuresGreaterThanEqual(0);
+            assertNotEquals(0,lc.size(),"la liste ne contient aucun element");
+        }catch (Exception e)
+        {
+            fail("erreur de recherche de tous les cours");
+        }
+
     }
 }
