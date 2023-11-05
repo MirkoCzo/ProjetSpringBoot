@@ -95,8 +95,9 @@ class SessionCoursServiceImplTest {
     void create() {
         try {
             assertNotEquals(0, sessionCours.getId_sessioncours(), "Id non incrementé: " + sessionCours.getId_sessioncours());
-            assertEquals(dateDebut, sessionCours.getDateDebut(), "Dates de début différente, date voulue : " + dateDebut + " réelle date : " + sessionCours.getDateDebut());
-            assertEquals(dateFin,sessionCours.getDateFin(), "Date de fin différente, date voulue: " + dateDebut + " réelle date: " + sessionCours.getDateFin());
+            assertEquals(dateDebut, sessionCours.getDate_Debut(), "Dates de début différente, date voulue : " + dateDebut + " réelle date : " + sessionCours.getDate_Debut());
+            assertEquals(dateFin,sessionCours.getDate_Fin(), "Date de fin différente, date voulue: " + dateDebut + " réelle date: " + sessionCours.getDate_Fin());
+            assertEquals(001,sessionCours.getNbreinscrits(),"nombre d'inscrits différent.");
             assertEquals(local.getId_local(), sessionCours.getLocal().getId_local(), "Id de local différent, ID voulu: " + local.getId_local() + " réel ID : " + sessionCours.getLocal().getId_local());
             assertEquals(cours.getId_cours(), sessionCours.getCours().getId_cours(), "Id de cours différent, ID voulu: " + cours.getId_cours() + " réel ID: " + sessionCours.getCours().getId_cours());
         }catch (Exception e)
@@ -113,8 +114,9 @@ class SessionCoursServiceImplTest {
             SessionCours sess2=sessionCoursService.read(numsess);
             assertEquals(local,sess2.getLocal(),"local différent"+sess2.getLocal()+" et"+local);
             assertEquals(cours,sess2.getCours(),"cours différents"+sess2.getCours()+" et"+cours);
-            assertEquals(dateDebut, sessionCours.getDateDebut(), "Dates de début différente, date voulue : " + sessionCours.getDateDebut() + " réelle date : " +dateDebut );
-            assertEquals(dateFin, sess2.getDateFin(), "Date de fin différente, date voulue: " + sess2.getDateFin() + " réelle date: " + dateDebut);
+            assertEquals(dateDebut, sessionCours.getDate_Debut(), "Dates de début différente, date voulue : " + sessionCours.getDate_Debut() + " réelle date : " +dateDebut );
+            assertEquals(dateFin, sess2.getDate_Fin(), "Date de fin différente, date voulue: " + sess2.getDate_Fin() + " réelle date: " + dateDebut);
+            assertEquals(001,sess2.getNbreinscrits(),"Nombre d'inscrit different: "+sess2.getNbreinscrits()+" reel nombre: "+sessionCours.getNbreinscrits());
 
         }catch(Exception e)
         {
@@ -132,13 +134,15 @@ class SessionCoursServiceImplTest {
             Date newDateFin = Date.valueOf(dateFinLoc2);
             cours.setMatiere("TestMatiere2");
             local.setSigle("TestSigle2");
-            sessionCours.setDateDebut(newDateDebut);
-            sessionCours.setDateFin(newDateFin);
+            sessionCours.setDate_Debut(newDateDebut);
+            sessionCours.setDate_Fin(newDateFin);
+            sessionCours.setNbreinscrits(002);
             sessionCours = sessionCoursService.update(sessionCours);
             assertEquals("TestMatiere2",sessionCours.getCours().getMatiere()," matière donc cours différent de TestMatiere2: "+sessionCours.getCours().getMatiere());
             assertEquals("TestSigle2",sessionCours.getLocal().getSigle(),"Sigle différent donc local différent de TestSigle2: "+sessionCours.getLocal().getSigle());
-            assertEquals(newDateDebut,sessionCours.getDateDebut(),"Date différente de "+newDateDebut+" : "+sessionCours.getDateDebut());
-            assertEquals(newDateFin,sessionCours.getDateFin(),"Date différente de "+newDateFin+" : "+sessionCours.getDateFin());
+            assertEquals(002,sessionCours.getNbreinscrits(),"Nombre d'inscrits différent: "+sessionCours.getNbreinscrits());
+            assertEquals(newDateDebut,sessionCours.getDate_Debut(),"Date différente de "+newDateDebut+" : "+sessionCours.getDate_Debut());
+            assertEquals(newDateFin,sessionCours.getDate_Fin(),"Date différente de "+newDateFin+" : "+sessionCours.getDate_Fin());
 
 
         }catch (Exception e)
@@ -169,7 +173,7 @@ class SessionCoursServiceImplTest {
             List<SessionCours> lsc = sessionCoursService.all();
             assertNotEquals(0,"La Liste ne contient aucun element.");
             for (SessionCours se : lsc
-                 ) {
+            ) {
                 System.out.println(se);
             }
 
@@ -177,5 +181,26 @@ class SessionCoursServiceImplTest {
         {
             fail("Erreur lors de la recherche de toutes les sessions de cours.");
         }
+    }
+
+    @Test
+    void findSessionCoursByNbreinscritsGreaterThan() {
+        try
+        {
+            boolean flag = false;
+            List<SessionCours> lsc=sessionCoursService.findSessionCoursByNbreinscritsGreaterThan(0);
+            for (SessionCours sc : lsc
+            ) {
+                System.out.println(sc);
+                flag=true;
+
+            }
+            assertTrue(flag,"Aucune Session dans la liste");
+
+        }catch (Exception e)
+        {
+            fail("Erreur lors de la recherche de toutes les session par nombre d'inscrits.");
+        }
+
     }
 }

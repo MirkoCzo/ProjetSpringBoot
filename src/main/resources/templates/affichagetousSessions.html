@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Les Sessions</title>
+</head>
+<body>
+<table border="1">
+  <th>Id de la session</th>
+  <th>Date de debut</th>
+  <th>Date de fin</th>
+  <th>Nombre d'inscrits</th>
+  <th>Id du local</th>
+  <th>Id du cours</th>
+
+  <tr th:each="uneSession : ${mesSessions}">
+    <td th:text="${uneSession.id_sessioncours}"/>
+    <td th:text="${uneSession.Date_Debut}"/>
+    <td th:text="${uneSession.Date_Fin}"/>
+    <td th:text="${uneSession.nbreinscrits}"/>
+    <td th:text="${uneSession.local.id_local}"/>
+    <td th:text="${uneSession.cours.id_cours}"/>
+
+  </tr>
+</table>
+<a href="/">Retour accueil</a>
+</body>
+</html>

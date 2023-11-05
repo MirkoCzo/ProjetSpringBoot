@@ -7,7 +7,7 @@
 <body>
 <div>
     <div>
-        <h1><a href="/cours/tous">Afficher tous les cours</a></h1>
+        <h1><a href="/cours/tous">Afficher tous les cours</a> <h1><a href="/sessionCours/tous">Afficher toutes les sessions</a></h1></h1>
         <h2>Rechercher un cours</h2>
         <form action="cours/selection" method="get" id="searchForm">
             Rentrez un ID pour rechercher un cours = <input type="text" id="id" name="id"/>
@@ -36,6 +36,13 @@
         <form action="cours/findAllCoursByMatiere" method="get" id="searchAllByMatiere">
             <p>Entrer le nom de la matière : <input type="text" id="findMat" name="findMat"></p>
             <button type="submit" form="searchAllByMatiere">Rechercher</button>
+        </form>
+    </div>
+    <div>
+        <h2>Rechercher les sessions par nombre d'inscrits</h2>
+        <form action="sessionCours/findByNbreInscrit" method="get" id="searchAllByInscrits">
+            <p>Entrer le nombre d'inscrits : <input type="text" id="inscrits" name="inscrits"></p>
+            <button type="submit" form="searchAllByInscrits">Rechercher</button>
         </form>
     </div>
 </div>

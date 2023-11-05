@@ -6,12 +6,13 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @Transactional(rollbackOn = Exception.class)
-public class SessionCoursServiceImpl implements InterfService<SessionCours> {
+public class SessionCoursServiceImpl implements InterfSessionCoursService {
 
     @Autowired
     private SessionCoursRepository sessionCoursRepository;
@@ -43,5 +44,11 @@ public class SessionCoursServiceImpl implements InterfService<SessionCours> {
     @Override
     public List<SessionCours> all() throws Exception {
         return sessionCoursRepository.findAll();
+    }
+
+
+    @Override
+    public List<SessionCours> findSessionCoursByNbreinscritsGreaterThan(int nbreinscrit) {
+        return sessionCoursRepository.findSessionCoursByNbreinscritsGreaterThan(nbreinscrit);
     }
 }

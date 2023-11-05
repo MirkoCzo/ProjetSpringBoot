@@ -19,10 +19,10 @@ public class SessionCours {
     private Integer id_sessioncours;
 
     @NonNull
-    private Date DateDebut;
+    private Date Date_Debut;
 
     @NonNull
-    private Date DateFin;
+    private Date Date_Fin;
 
     @NonNull
     private Integer nbreinscrits;
