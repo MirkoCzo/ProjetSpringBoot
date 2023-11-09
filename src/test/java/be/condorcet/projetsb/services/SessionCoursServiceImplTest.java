@@ -14,6 +14,8 @@ import javax.swing.text.html.Option;
 import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,10 +49,9 @@ class SessionCoursServiceImplTest {
     @BeforeEach
     void setUp() {
         try {
-
-            local = new Local("TestSigle",001,"TestDescription");
+            local = new Local(null,"TestSigle",001,"TestDescription",new ArrayList<>());
             localService.create(local);
-            cours = new Cours("TestMatiere",001);
+            cours = new Cours(null,"TestMatiere",001,new ArrayList<>());
             coursService.create(cours);
             sessionCours = new SessionCours(dateDebut,dateFin,001,local,cours);
             sessionCoursService.create(sessionCours);
@@ -110,8 +111,7 @@ class SessionCoursServiceImplTest {
     void read() {
         try
         {
-            int numsess=sessionCours.getId_sessioncours();
-            SessionCours sess2=sessionCoursService.read(numsess);
+            SessionCours sess2=sessionCoursService.read(sessionCours.getId_sessioncours());
             assertEquals(local,sess2.getLocal(),"local différent"+sess2.getLocal()+" et"+local);
             assertEquals(cours,sess2.getCours(),"cours différents"+sess2.getCours()+" et"+cours);
             assertEquals(dateDebut, sessionCours.getDate_Debut(), "Dates de début différente, date voulue : " + sessionCours.getDate_Debut() + " réelle date : " +dateDebut );
@@ -219,7 +219,24 @@ class SessionCoursServiceImplTest {
             assertTrue(flag,"Aucune Session dans la liste");
         }catch (Exception e)
         {
-            fail("Erreur lors de la recherche de toutes les session par nombre d'inscrits.");
+            fail("Erreur lors de la recherche de toutes les session par ID donné.");
+        }
+    }
+
+    @Test
+    void findSessionCoursByCours() { //Correction par rapport a findByCours_IDCOURS
+        try {
+            Collection<SessionCours> lsc = sessionCoursService.findSessionCoursByCours(cours);
+            boolean trouve = false;
+            for(SessionCours sc:lsc){
+                if(sc.getCours().equals(cours)){
+                    trouve=true;
+                }
+            }
+            assertTrue(trouve,"commande absente de la liste du client");
+        }
+        catch(Exception e){
+            fail("Erreur lors de la recherche de toutes les sessions par cours donné"+e);
         }
     }
 }

@@ -10,4 +10,7 @@ public interface InterfSessionCoursService extends InterfService<SessionCours> {
     List<SessionCours> findSessionCoursByNbreinscritsGreaterThan(int nbreinscrit);
     List<SessionCours> findSessionCoursByCours_Idcours(int idcours);
 
+    public List<SessionCours> findSessionCoursByCours(Cours cours);
+
+
 }

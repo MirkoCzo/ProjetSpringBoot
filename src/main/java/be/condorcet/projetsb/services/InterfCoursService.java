@@ -9,6 +9,6 @@ import java.util.List;
 public interface InterfCoursService extends InterfService<Cours>{
 
     List<Cours> findAllByHeuresGreaterThanEqual(int heures);
-
+    List<Cours> findByMatiere(String matiere);
 
 }

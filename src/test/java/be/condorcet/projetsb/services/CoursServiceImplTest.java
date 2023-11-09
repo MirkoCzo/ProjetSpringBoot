@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,7 +24,7 @@ class CoursServiceImplTest {
     void setUp() {
         try
         {
-            cours = new Cours(null,"TestMatiere",01);
+            cours = new Cours(null,"TestMatiere",01,new ArrayList<>());
             coursServiceImpl.create(cours);
             System.out.println("Création du cours: "+cours);
         }
@@ -64,8 +65,8 @@ class CoursServiceImplTest {
     void read() {
         try
         {
-            int numcours=cours.getIdcours();
-            Cours cours2=coursServiceImpl.read(numcours);
+            int idcours = cours.getIdcours();
+            Cours cours2=coursServiceImpl.read(idcours);
             assertEquals("TestMatiere",cours2.getMatiere());
             assertEquals(01,cours2.getHeures());
         }
@@ -121,11 +122,11 @@ class CoursServiceImplTest {
     void findAllByHeuresGreaterThanEqual() {
         try
         {
-            List<Cours> lc = coursServiceImpl.findAllByHeuresGreaterThanEqual(0);
+            List<Cours> lc = coursServiceImpl.findAllByHeuresGreaterThanEqual(0); //Comprend pas l'utilité d'utiliser une autre valeur que 0
             assertNotEquals(0,lc.size(),"la liste ne contient aucun element");
         }catch (Exception e)
         {
-            fail("erreur de recherche de tous les cours");
+            fail("erreur de recherche de tous les cours: "+e);
         }
 
     }

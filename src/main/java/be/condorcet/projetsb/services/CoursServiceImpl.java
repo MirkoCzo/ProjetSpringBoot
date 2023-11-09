@@ -50,4 +50,11 @@ public class CoursServiceImpl implements InterfCoursService{
     public List<Cours> findAllByHeuresGreaterThanEqual(int heures) {
         return coursRepository.findAllByHeuresGreaterThanEqual(heures);
     }
+
+    @Override
+    public List<Cours> findByMatiere(String matiere) {
+        return coursRepository.findByMatiere(matiere);
+    }
+
+
 }

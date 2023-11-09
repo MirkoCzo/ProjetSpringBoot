@@ -13,4 +13,6 @@ public interface SessionCoursRepository extends JpaRepository<SessionCours,Integ
 
    List<SessionCours> findSessionCoursByCours_Idcours(int idcours);
 
+   List<SessionCours> findSessionCoursByCours(Cours cours);
+
 }

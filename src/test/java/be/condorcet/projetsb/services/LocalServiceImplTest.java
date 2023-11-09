@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,7 +25,7 @@ class LocalServiceImplTest {
     void setUp() {
         try
         {
-            local= new Local("TestSigle",0,"TestDescription");
+            local= new Local(null,"TestSigle",0,"TestDescription",new ArrayList<>());
             localServiceImpl.create(local);
             System.out.println("Création du cours: "+local);
         }catch (Exception e)

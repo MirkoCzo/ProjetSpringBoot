@@ -58,5 +58,12 @@ public class SessionCoursServiceImpl implements InterfSessionCoursService {
         return sessionCoursRepository.findSessionCoursByCours_Idcours(idcours);
     }
 
+    @Override
+    public List<SessionCours> findSessionCoursByCours(Cours cours) {
+        return sessionCoursRepository.findSessionCoursByCours(cours);
+    }
+
+
+
 
 }
