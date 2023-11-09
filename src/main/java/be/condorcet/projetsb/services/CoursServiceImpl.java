@@ -35,9 +35,10 @@ public class CoursServiceImpl implements InterfCoursService{
         return cours;
     }
 
+
     @Override
-    public void delete(Cours cours) throws Exception {
-        coursRepository.deleteById(cours.getIdcours());
+    public void delete(Cours cours) throws Exception{
+        coursRepository.delete(cours);
     }
 
     @Override

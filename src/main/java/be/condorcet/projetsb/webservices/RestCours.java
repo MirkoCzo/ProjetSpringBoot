@@ -67,7 +67,9 @@ public class RestCours {
     {
         System.out.println("Suppresion du cours d'ID: "+id);
         Cours cours = courServiceImpl.read(id);
+        System.out.println(cours);
         courServiceImpl.delete(cours);
+        System.out.println("Cours supprimé");
         return new ResponseEntity<>(HttpStatus.OK);
     }
     //--------------------------TOUT LES COURS-----------------------------------------
