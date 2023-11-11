@@ -9,10 +9,12 @@ import java.util.List;
 
 public interface SessionCoursRepository extends JpaRepository<SessionCours,Integer> {
 
-   List<SessionCours> findSessionCoursByNbreinscritsGreaterThan(int nbreinscrit); //critere non unique
+   List<SessionCours> findSessionCoursByNbreinscritsGreaterThan(int nbreinscrit) throws Exception; //critere non unique
 
-   List<SessionCours> findSessionCoursByCours_Idcours(int idcours);
+   List<SessionCours> findSessionCoursByCours_Idcours(int idcours)throws Exception;
 
-   List<SessionCours> findSessionCoursByCours(Cours cours);
+   List<SessionCours> findSessionCoursByCours(Cours cours)throws Exception;
+
+
 
 }

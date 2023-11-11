@@ -14,11 +14,11 @@
     <th>Id du cours</th>
 
     <tr th:each="uneSession : ${mesSessions}">
-        <td th:text="${uneSession.id_sessioncours}"/>
+        <td th:text="${uneSession.idsessioncours}"/>
         <td th:text="${uneSession.Date_Debut}"/>
         <td th:text="${uneSession.Date_Fin}"/>
         <td th:text="${uneSession.nbreinscrits}"/>
-        <td th:text="${uneSession.local.id_local}"/>
+        <td th:text="${uneSession.local.idlocal}"/>
         <td th:text="${uneSession.cours.idcours}"/>
 
     </tr>

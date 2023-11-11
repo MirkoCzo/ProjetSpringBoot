@@ -7,7 +7,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,14 +31,14 @@ public class SessionCoursServiceImpl implements InterfSessionCoursService {
 
     @Override
     public SessionCours update(SessionCours sessionCours) throws Exception {
-        read(sessionCours.getId_sessioncours());
+        read(sessionCours.getIdsessioncours());
         sessionCoursRepository.save(sessionCours);
         return sessionCours;
     }
 
     @Override
     public void delete(SessionCours sessionCours) throws Exception {
-        sessionCoursRepository.delete(sessionCours);
+        sessionCoursRepository.deleteById(sessionCours.getIdsessioncours());
     }
 
     @Override
@@ -49,17 +48,17 @@ public class SessionCoursServiceImpl implements InterfSessionCoursService {
 
 
     @Override
-    public List<SessionCours> findSessionCoursByNbreinscritsGreaterThan(int nbreinscrit) {
+    public List<SessionCours> findSessionCoursByNbreinscritsGreaterThan(int nbreinscrit) throws Exception {
         return sessionCoursRepository.findSessionCoursByNbreinscritsGreaterThan(nbreinscrit);
     }
 
     @Override
-    public List<SessionCours> findSessionCoursByCours_Idcours(int idcours) {
+    public List<SessionCours> findSessionCoursByCours_Idcours(int idcours)throws Exception {
         return sessionCoursRepository.findSessionCoursByCours_Idcours(idcours);
     }
 
     @Override
-    public List<SessionCours> findSessionCoursByCours(Cours cours) {
+    public List<SessionCours> findSessionCoursByCours(Cours cours)throws Exception {
         return sessionCoursRepository.findSessionCoursByCours(cours);
     }
 

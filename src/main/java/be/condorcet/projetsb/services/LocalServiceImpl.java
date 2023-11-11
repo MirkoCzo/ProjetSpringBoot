@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @Transactional(rollbackOn = Exception.class)
-public class LocalServiceImpl implements InterfLocalService{
+public class LocalServiceImpl implements InterfLocalService {
 
     @Autowired
     private LocalRepository localRepository;
@@ -29,14 +29,14 @@ public class LocalServiceImpl implements InterfLocalService{
 
     @Override
     public Local update(Local local) throws Exception {
-        read(local.getId_local());
+        read(local.getIdlocal());
         localRepository.save(local);
         return local;
     }
 
     @Override
     public void delete(Local local) throws Exception {
-        localRepository.deleteById(local.getId_local());
+        localRepository.deleteById(local.getIdlocal());
     }
 
     @Override
@@ -47,5 +47,11 @@ public class LocalServiceImpl implements InterfLocalService{
     @Override
     public List<Local> findAllByPlacesGreaterThanEqual(int places) {
         return localRepository.findAllByPlacesGreaterThanEqual(places);
+    }
+
+    @Override
+    public Local findBySigle(String sigle)
+    {
+        return localRepository.findBySigle(sigle);
     }
 }

@@ -30,7 +30,7 @@ class LocalServiceImplTest {
             System.out.println("Création du cours: "+local);
         }catch (Exception e)
         {
-            System.out.println("Erreur lors de la création du local: "+local);
+            System.out.println("Erreur lors de la création du local: "+local+" erreur: "+e);
         }
     }
 
@@ -51,13 +51,13 @@ class LocalServiceImplTest {
     void create() {
         try
         {
-            assertNotEquals(0,local.getId_local(),"Id du local non incrémenté");
+            assertNotEquals(0,local.getIdlocal(),"Id du local non incrémenté");
             assertEquals(0,local.getPlaces(),"Nombre de places enregistré: "+local.getPlaces()+" au lieu de 0");
             assertEquals("TestSigle",local.getSigle(),"Local non enregistré: "+local.getSigle()+" au lieu de TestSigle");
 
         }catch (Exception e)
         {
-            System.out.println("Erreur lors de la création");
+            System.out.println("Erreur lors de la création" +e);
         }
 
     }
@@ -65,7 +65,7 @@ class LocalServiceImplTest {
     @Test
     void read() {
         try {
-            int numLocal = local.getId_local();
+            int numLocal = local.getIdlocal();
             Local local2 = localServiceImpl.read(numLocal);
             assertEquals("TestSigle",local2.getSigle());
             assertEquals(0,local2.getPlaces());
@@ -81,11 +81,11 @@ class LocalServiceImplTest {
     void update() {
         try {
             local.setSigle("TestLocal2");
-            local.setPlaces(001);
+            local.setPlaces(1);
             local.setDescription("TestDescription2");
             localServiceImpl.update(local);
             assertEquals("TestLocal2",local.getSigle()," Sigle différent");
-            assertEquals(001,local.getPlaces()," nombre de places différentes");
+            assertEquals(1,local.getPlaces()," nombre de places différentes");
             assertEquals("TestDescription2",local.getDescription()," description différente");
         }catch (Exception e)
         {
@@ -99,7 +99,7 @@ class LocalServiceImplTest {
         {
             localServiceImpl.delete(local);
             Assertions.assertThrows(Exception.class,() -> {
-                localServiceImpl.read(local.getId_local());
+                localServiceImpl.read(local.getIdlocal());
             },"local non effacé");
         }catch(Exception e)
         {

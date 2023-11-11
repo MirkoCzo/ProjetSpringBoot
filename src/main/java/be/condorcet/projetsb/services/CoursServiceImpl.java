@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 @Transactional(rollbackOn = Exception.class)
 
-public class CoursServiceImpl implements InterfCoursService{
+public class CoursServiceImpl implements InterfCoursService {
     @Autowired
     private CoursRepository coursRepository;
 
@@ -35,11 +35,11 @@ public class CoursServiceImpl implements InterfCoursService{
         return cours;
     }
 
-
     @Override
-    public void delete(Cours cours) throws Exception{
-        coursRepository.delete(cours);
+    public void delete(Cours cours) throws Exception {
+        coursRepository.deleteById(cours.getIdcours());
     }
+
 
     @Override
     public List<Cours> all() throws Exception {

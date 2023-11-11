@@ -8,4 +8,6 @@ import java.util.List;
 public interface LocalRepository extends JpaRepository<Local,Integer> {
 
     List<Local> findAllByPlacesGreaterThanEqual(int places);
+
+    Local findBySigle(String sigle);
 }

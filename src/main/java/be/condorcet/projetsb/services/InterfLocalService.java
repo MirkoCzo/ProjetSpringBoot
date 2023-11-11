@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface InterfLocalService extends InterfService<Local>{
     List<Local> findAllByPlacesGreaterThanEqual(int places);
+
+    Local findBySigle(String sigle);
 }

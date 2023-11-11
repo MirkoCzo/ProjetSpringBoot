@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -24,7 +25,6 @@ public class Cours {
     private String matiere;
     @NonNull
     private int heures;
-
     @JsonIgnore
     // @OneToMany(mappedBy = "cours" , fetch = FetchType.EAGER)
     // @OneToMany(mappedBy = "cours" , fetch = FetchType.LAZY,cascade=CascadeType.ALL, orphanRemoval=true)
@@ -34,5 +34,20 @@ public class Cours {
     // orphanRemoval=true permet d'ajouter et supprimer des sessions de cours en DB à partir de la liste
     @ToString.Exclude
     private List<SessionCours> sessionCoursList;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cours cours = (Cours) o;
+        return Objects.equals(idcours, cours.idcours);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idcours);
+    }
+
 
 }

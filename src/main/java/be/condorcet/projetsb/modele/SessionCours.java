@@ -1,10 +1,14 @@
 package be.condorcet.projetsb.modele;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +20,7 @@ import java.sql.Date;
 public class SessionCours {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sessioncours_generator")
     @SequenceGenerator(name = "sessioncours_generator", sequenceName = "APISESSIONCOURS_SEQ1", allocationSize = 1)
-    private Integer id_sessioncours;
+    private Integer idsessioncours;
 
     @NonNull
     private Date Date_Debut;
@@ -28,10 +32,32 @@ public class SessionCours {
     private Integer nbreinscrits;
 
     @NonNull
-    @ManyToOne @JoinColumn(name = "ID_LOCAL")
+    @ManyToOne @JoinColumn(name = "IDLOCAL")
     private Local local;
 
     @NonNull
     @ManyToOne @JoinColumn(name = "IDCOURS")
     private Cours cours;
+
+    /*@JsonIgnore
+    //@OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
+    // @OneToMany(mappedBy = "client" , fetch = FetchType.LAZY,cascade=CascadeType.ALL, orphanRemoval=true)
+    @ManyToMany(mappedBy = "SessionsCours")
+    private List<Formateur> formateurs = new ArrayList<>();*/
+
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SessionCours that = (SessionCours) o;
+        return Objects.equals(idsessioncours, that.idsessioncours) && Date_Debut.equals(that.Date_Debut) && Date_Fin.equals(that.Date_Fin) && nbreinscrits.equals(that.nbreinscrits) && local.equals(that.local) && cours.equals(that.cours);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idsessioncours, Date_Debut, Date_Fin, nbreinscrits, local, cours);
+    }
 }

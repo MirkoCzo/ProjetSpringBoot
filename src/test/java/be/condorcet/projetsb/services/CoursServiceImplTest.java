@@ -24,7 +24,7 @@ class CoursServiceImplTest {
     void setUp() {
         try
         {
-            cours = new Cours(null,"TestMatiere",01,new ArrayList<>());
+            cours = new Cours(null,"TestMatiere",1,new ArrayList<>());
             coursServiceImpl.create(cours);
             System.out.println("Création du cours: "+cours);
         }
@@ -53,7 +53,7 @@ class CoursServiceImplTest {
         {
             assertNotEquals(0,cours.getIdcours(),"Id du cours non incrémenté");
             assertEquals("TestMatiere",cours.getMatiere(),"Matière non enregistré: "+cours.getMatiere()+" au lieu de TestMatiere");
-            assertEquals(01, cours.getHeures(),"Nombre d'heures incorrectes: "+cours.getHeures()+" au lieu de 01");
+            assertEquals(1, cours.getHeures(),"Nombre d'heures incorrectes: "+cours.getHeures()+" au lieu de 1");
         }
         catch (Exception e)
         {
@@ -68,7 +68,7 @@ class CoursServiceImplTest {
             int idcours = cours.getIdcours();
             Cours cours2=coursServiceImpl.read(idcours);
             assertEquals("TestMatiere",cours2.getMatiere());
-            assertEquals(01,cours2.getHeures());
+            assertEquals(1,cours2.getHeures());
         }
         catch (Exception e)
         {
