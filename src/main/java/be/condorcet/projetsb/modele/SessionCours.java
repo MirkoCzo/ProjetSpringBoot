@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -39,11 +40,10 @@ public class SessionCours {
     @ManyToOne @JoinColumn(name = "IDCOURS")
     private Cours cours;
 
-    /*@JsonIgnore
-    //@OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
-    // @OneToMany(mappedBy = "client" , fetch = FetchType.LAZY,cascade=CascadeType.ALL, orphanRemoval=true)
-    @ManyToMany(mappedBy = "SessionsCours")
-    private List<Formateur> formateurs = new ArrayList<>();*/
+    @JsonIgnore
+    @ToString.Exclude
+    @OneToMany(mappedBy = "sessionCours")
+    private List<Infos> infos;
 
 
 

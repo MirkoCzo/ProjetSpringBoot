@@ -1,10 +1,12 @@
 package be.condorcet.projetsb.modele;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -28,11 +30,10 @@ public class Formateur {
     @NonNull
     private String prenom;
 
-    @ManyToMany
-    @JoinTable(name = "APIINFOS",
-            joinColumns = @JoinColumn(name = "IDSESSIONCOURS"),
-            inverseJoinColumns = @JoinColumn(name = "IDFORMATEUR"))
-    private List<SessionCours> sessionsCours = new ArrayList<>();
+    @JsonIgnore
+    @ToString.Exclude
+    @OneToMany(mappedBy = "formateur")
+    private List<Infos> infos;
 
 
 }

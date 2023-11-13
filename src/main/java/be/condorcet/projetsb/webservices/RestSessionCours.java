@@ -33,11 +33,10 @@ public class RestSessionCours {
         List<SessionCours> sessionCoursList = sessionCoursServiceImpl.findSessionCoursByNbreinscritsGreaterThan(nbreinscrits);
         if(sessionCoursList.isEmpty())
         {
-            System.out.println("Liste vide renvoi 404");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         else {
-            System.out.println("Liste pas vide renvoi 200");
+
             return new ResponseEntity<>(sessionCoursList, HttpStatus.OK);
         }
     }

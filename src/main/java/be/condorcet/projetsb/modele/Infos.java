@@ -9,22 +9,28 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @ToString
 @Entity
 @Table(name = "APIINFOS", schema = "ORA2", catalog = "XE")
 public class Infos {
 
-    @Id
-    @JoinColumn(name = "IDFORMATEUR")
-    private int idformateur;
 
-    @Id
+    @EmbeddedId
+    private InfosKey id;
+
+
+    @ManyToOne
+    @MapsId("idsessioncours")
     @JoinColumn(name = "IDSESSIONCOURS")
-    private int idsessioncours;
+    private SessionCours sessionCours;
 
-    @NonNull
-    private int nombreHeures;
+
+    @ManyToOne
+    @MapsId("idformateur")
+    @JoinColumn(name = "IDFORMATEUR")
+    private Formateur formateur;
+
+    private int nh;
 
     //TODO JE NE SAIS PAS COMMENT CREER UN REPOSITORY QUAND CELUI SI DEPEND DE 2 CLEFS
 }

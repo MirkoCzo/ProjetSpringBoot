@@ -43,4 +43,14 @@ public class FormateurServiceImpl implements InterfFormateurService {
     public List<Formateur> all() throws Exception {
         return formateurRepository.findAll();
     }
+
+    @Override
+    public Formateur findFormateurByMail(String mail) {
+        return formateurRepository.findFormateurByMail(mail);
+    }
+
+    @Override
+    public List<Formateur> findFormateurByNomAndPrenom(String nom,String prenom) {
+        return formateurRepository.findFormateurByNomAndPrenom(nom,prenom);
+    }
 }
