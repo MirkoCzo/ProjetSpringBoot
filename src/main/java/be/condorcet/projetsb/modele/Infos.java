@@ -31,8 +31,6 @@ public class Infos {
     private Formateur formateur;
 
     private int nh;
-
-    //TODO JE NE SAIS PAS COMMENT CREER UN REPOSITORY QUAND CELUI SI DEPEND DE 2 CLEFS
 }
 
 

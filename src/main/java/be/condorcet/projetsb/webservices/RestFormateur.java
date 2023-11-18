@@ -47,6 +47,7 @@ public class RestFormateur {
     public ResponseEntity<Void> deleteFormateur(@PathVariable(value = "id") int id) throws Exception {
         System.out.println("Suppression du formateur d'ID : " + id);
         Formateur formateur = formateurServiceImpl.read(id);
+        System.out.println("Formateur: "+formateur);
         formateurServiceImpl.delete(formateur);
         System.out.println("Formateur supprimé");
         return new ResponseEntity<>(HttpStatus.OK);

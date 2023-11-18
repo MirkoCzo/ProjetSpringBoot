@@ -2,10 +2,14 @@ package be.condorcet.projetsb.modele;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Embeddable
 public class InfosKey implements Serializable {
     @Column(name = "IDSESSIONCOURS")
