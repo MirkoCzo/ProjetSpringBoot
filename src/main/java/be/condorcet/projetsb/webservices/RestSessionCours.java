@@ -40,6 +40,14 @@ public class RestSessionCours {
             return new ResponseEntity<>(sessionCoursList, HttpStatus.OK);
         }
     }
+    //--------------------------Retrouver les sessions de cours pour un cours donné--------------------------//
+    @RequestMapping(value = "/idcours/{idcours}", method = RequestMethod.GET)
+    public ResponseEntity<List<SessionCours>> listSessionCoursByCours(@PathVariable(value = "idcours") int idcours) throws Exception {
+        System.out.println("Recherche des sessions ayant comme ID de cours: " + idcours);
+        List<SessionCours> sessionCoursList = sessionCoursServiceImpl.findSessionCoursByCours_Idcours(idcours);
+        return new ResponseEntity<>(sessionCoursList, HttpStatus.OK);
+    }
+
 
     //--------------------------Créer une session de cours-----------------------------------------
     @RequestMapping(value = "", method = RequestMethod.POST)

@@ -45,6 +45,7 @@ public class RestCours {
         return new ResponseEntity<>(coursList,HttpStatus.OK);
     }
     //--------------------------Creer un cours-----------------------------------------
+
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<Cours> createCours(@RequestBody Cours cours) throws Exception
     {
