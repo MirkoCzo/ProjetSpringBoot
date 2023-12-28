@@ -31,17 +31,10 @@ public class RestSessionCours {
     public ResponseEntity<List<SessionCours>> listSessionsCoursInscrits(@PathVariable(value = "nbreinscrits") int nbreinscrits) throws Exception {
         System.out.println("Recherche des sessions de cours avec un nombre d'inscrits >= " + nbreinscrits);
         List<SessionCours> sessionCoursList = sessionCoursServiceImpl.findSessionCoursByNbreinscritsGreaterThan(nbreinscrits);
-        if(sessionCoursList.isEmpty())
-        {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        else {
-
-            return new ResponseEntity<>(sessionCoursList, HttpStatus.OK);
-        }
+        return new ResponseEntity<>(sessionCoursList, HttpStatus.OK);
     }
     //--------------------------Retrouver les sessions de cours pour un cours donné--------------------------//
-    @RequestMapping(value = "/idcours/{idcours}", method = RequestMethod.GET)
+    @RequestMapping(value = "/idcours={idcours}", method = RequestMethod.GET)
     public ResponseEntity<List<SessionCours>> listSessionCoursByCours(@PathVariable(value = "idcours") int idcours) throws Exception {
         System.out.println("Recherche des sessions ayant comme ID de cours: " + idcours);
         List<SessionCours> sessionCoursList = sessionCoursServiceImpl.findSessionCoursByCours_Idcours(idcours);
