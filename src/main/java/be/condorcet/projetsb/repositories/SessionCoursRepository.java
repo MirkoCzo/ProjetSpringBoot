@@ -16,7 +16,4 @@ public interface SessionCoursRepository extends JpaRepository<SessionCours,Integ
    List<SessionCours> findSessionCoursByCours(Cours cours)throws Exception;
 
 
-
-
-
 }

@@ -9,5 +9,5 @@ public interface LocalRepository extends JpaRepository<Local,Integer> {
 
     List<Local> findAllByPlacesGreaterThanEqual(int places);
 
-    Local findBySigle(String sigle);
+    List<Local> findBySigle(String sigle);
 }
