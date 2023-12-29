@@ -34,11 +34,11 @@ public class RestLocal {
     }
     //--------------------------Retrouver le local avec un sigle donné-----------------------------------------
     @RequestMapping(value = "/sigle={sigle}",method = RequestMethod.GET)
-    public ResponseEntity<List<Local>> localBySigle(@PathVariable(value = "sigle")String sigle) throws Exception{
+    public ResponseEntity<Local> localBySigle(@PathVariable(value = "sigle")String sigle) throws Exception{
         System.out.println("Recherche du local ayant le sigle "+sigle);
-        List<Local> localSigleList = localServiceImpl.findBySigle(sigle);
-        System.out.println(localSigleList);
-        return new ResponseEntity<>(localSigleList,HttpStatus.OK);
+        Local localSigle = localServiceImpl.findBySigle(sigle);
+        System.out.println(localSigle);
+        return new ResponseEntity<>(localSigle,HttpStatus.OK);
     }
 
 

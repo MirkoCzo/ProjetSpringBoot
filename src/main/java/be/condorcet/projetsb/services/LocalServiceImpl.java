@@ -50,7 +50,7 @@ public class LocalServiceImpl implements InterfLocalService {
     }
 
     @Override
-    public List<Local> findBySigle(String sigle)
+    public Local findBySigle(String sigle)
     {
         return localRepository.findBySigle(sigle);
     }
