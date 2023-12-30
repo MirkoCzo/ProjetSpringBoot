@@ -64,6 +64,7 @@ public class RestFormateur {
     public ResponseEntity<Formateur> getFormateurByMail(@PathVariable(value = "mail") String mail) throws Exception {
         System.out.println("Recherche du formateur par e-mail : " + mail);
         Formateur formateur = formateurServiceImpl.findFormateurByMail(mail);
+        System.out.println(formateurServiceImpl.findFormateurByMail(mail));
         return new ResponseEntity<>(formateur, HttpStatus.OK);
     }
 
@@ -74,12 +75,7 @@ public class RestFormateur {
             @PathVariable(value = "prenom") String prenom) throws Exception {
         System.out.println("Recherche des formateurs par nom et prénom : " + nom + " " + prenom);
         List<Formateur> formateurs = formateurServiceImpl.findFormateurByNomAndPrenom(nom, prenom);
-
-        if (!formateurs.isEmpty()) {
-            return new ResponseEntity<>(formateurs, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<>(formateurs, HttpStatus.OK);
     }
 
 
