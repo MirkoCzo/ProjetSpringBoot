@@ -7,7 +7,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface CoursRepository extends JpaRepository<Cours,Integer> {
@@ -21,6 +23,14 @@ public interface CoursRepository extends JpaRepository<Cours,Integer> {
     Collection<Cours> findAllCoursByMatiere(@Param("findMat") String findMat);
 
     List<Cours> findAllByHeuresGreaterThanEqual(int heures);
+
+    @Query(value = "SELECT c.* FROM APICOURS c JOIN APISESSIONCOURS s ON c.IDCOURS = s.IDCOURS WHERE s.DATE_DEBUT <= TO_DATE(:givenDate, 'YYYY-MM-DD') AND s.DATE_FIN >= TO_DATE(:givenDate, 'YYYY-MM-DD')", nativeQuery = true)
+    Set<Cours> findAllCoursesWithSessionsInRange(@Param("givenDate") String givenDate);
+
+
+
+
+
 
 
 }

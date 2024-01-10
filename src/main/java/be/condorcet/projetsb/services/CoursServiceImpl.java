@@ -6,8 +6,10 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Transactional(rollbackOn = Exception.class)
@@ -55,6 +57,11 @@ public class CoursServiceImpl implements InterfCoursService {
     @Override
     public List<Cours> findByMatiere(String matiere) {
         return coursRepository.findByMatiere(matiere);
+    }
+
+    @Override
+    public Set<Cours> findAllCoursesWithSessionsInRange(String givenDate) {
+        return coursRepository.findAllCoursesWithSessionsInRange(givenDate);
     }
 
 
